@@ -2,6 +2,7 @@ import argparse
 import urllib.request
 import os
 import random
+from cowsay import cowsay, list_cows
 
 def ask(prompt: str, valid: list[str] = None):
     inp_word = input(prompt)
@@ -12,7 +13,9 @@ def ask(prompt: str, valid: list[str] = None):
     return inp_word
 
 def inform(format_string: str, bulls: int, cows: int):
-    print(format_string.format(bulls, cows))
+    #print(format_string.format(bulls, cows))
+    cow = random.randrange(0, len(list_cows()))
+    print(cowsay(format_string.format(bulls, cows), cow=list_cows()[cow]))
     
 def bullscows(guess: str, secret: str):
     bulls = 0
