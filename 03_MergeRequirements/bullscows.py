@@ -1,6 +1,22 @@
 import argparse
 import urllib.request
 import os
+import random
+
+def gameplay(ask: callable, inform: callable, words: list[str]):
+    secret = random.choice(words)
+    attempts = 0
+    guess="."
+    while guess != secret:
+        #guess = ask("Введите слово: ", words)
+        attempts += 1
+        #bulls, cows = bullscows(guess, secret)
+        #inform("Быки: {}, Коровы: {}", bulls, cows)
+        if guess == ".":
+            print("Вы проиграли. Загаданное слово: ",secret)
+            return attempts
+    print("Вы победили!")
+    return attempts
 
 parser = argparse.ArgumentParser()
 parser.add_argument('dict', type=str)
@@ -16,5 +32,5 @@ else:
         words = [w.strip() for w in filter(lambda w : len(w.strip()) == args.len, f)]
 
 #print(len(words))
-
+print("Конец игры. Количество попыток: ", gameplay(ask, inform, words))
 
