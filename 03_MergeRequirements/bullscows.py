@@ -5,17 +5,20 @@ import random
 from cowsay import cowsay, list_cows
 
 def ask(prompt: str, valid: list[str] = None):
-    inp_word = input(prompt)
+    cow_print = random.randrange(0, len(list_cows()))
+    print(cowsay(prompt, cow=list_cows()[cow_print]))
+    inp_word = input()
     if valid is not None:
         while inp_word not in valid:
             if inp_word == ".": return inp_word
-            inp_word = input(prompt)
+            print(cowsay(prompt, cow=list_cows()[cow_print]))
+            inp_word = input()
     return inp_word
 
 def inform(format_string: str, bulls: int, cows: int):
     #print(format_string.format(bulls, cows))
-    cow = random.randrange(0, len(list_cows()))
-    print(cowsay(format_string.format(bulls, cows), cow=list_cows()[cow]))
+    cow_print = random.randrange(0, len(list_cows()))
+    print(cowsay(format_string.format(bulls, cows), cow=list_cows()[cow_print]))
     
 def bullscows(guess: str, secret: str):
     bulls = 0
