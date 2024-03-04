@@ -3,12 +3,22 @@ import urllib.request
 import os
 import random
 
+def ask(prompt: str, valid: list[str] = None):
+    inp_word = input(prompt)
+    if valid is not None:
+        while inp_word not in valid:
+            if inp_word == ".": return inp_word
+            print(prompt)
+            inp_word = str(input())
+    return inp_word
+    
+
 def gameplay(ask: callable, inform: callable, words: list[str]):
     secret = random.choice(words)
     attempts = 0
     guess="."
     while guess != secret:
-        #guess = ask("Введите слово: ", words)
+        guess = ask("Введите слово: ", words)
         attempts += 1
         #bulls, cows = bullscows(guess, secret)
         #inform("Быки: {}, Коровы: {}", bulls, cows)
