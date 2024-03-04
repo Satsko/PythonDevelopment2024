@@ -11,7 +11,9 @@ def ask(prompt: str, valid: list[str] = None):
             print(prompt)
             inp_word = str(input())
     return inp_word
-    
+
+def inform(format_string: str, bulls: int, cows: int):
+    print(format_string.format(bulls, cows))
 
 def gameplay(ask: callable, inform: callable, words: list[str]):
     secret = random.choice(words)
@@ -21,7 +23,7 @@ def gameplay(ask: callable, inform: callable, words: list[str]):
         guess = ask("Введите слово: ", words)
         attempts += 1
         #bulls, cows = bullscows(guess, secret)
-        #inform("Быки: {}, Коровы: {}", bulls, cows)
+        inform("Быки: {}, Коровы: {}", bulls, cows)
         if guess == ".":
             print("Вы проиграли. Загаданное слово: ",secret)
             return attempts
