@@ -8,8 +8,7 @@ def ask(prompt: str, valid: list[str] = None):
     if valid is not None:
         while inp_word not in valid:
             if inp_word == ".": return inp_word
-            print(prompt)
-            inp_word = str(input())
+            inp_word = input(prompt)
     return inp_word
 
 def inform(format_string: str, bulls: int, cows: int):
