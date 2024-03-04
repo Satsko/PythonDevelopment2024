@@ -13,6 +13,16 @@ def ask(prompt: str, valid: list[str] = None):
 
 def inform(format_string: str, bulls: int, cows: int):
     print(format_string.format(bulls, cows))
+    
+def bullscows(guess: str, secret: str):
+    bulls = 0
+    cows = 0
+    for inp, ref in zip(guess, secret):
+        if inp == ref:
+            bulls += 1
+    for inp in set(guess):
+        cows += min(guess.count(inp), secret.count(inp))
+    return (bulls, cows)
 
 def gameplay(ask: callable, inform: callable, words: list[str]):
     secret = random.choice(words)
