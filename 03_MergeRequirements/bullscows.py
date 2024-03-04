@@ -21,12 +21,12 @@ def gameplay(ask: callable, inform: callable, words: list[str]):
     guess="."
     while guess != secret:
         guess = ask("Введите слово: ", words)
-        attempts += 1
-        #bulls, cows = bullscows(guess, secret)
-        inform("Быки: {}, Коровы: {}", bulls, cows)
         if guess == ".":
             print("Вы проиграли. Загаданное слово: ",secret)
             return attempts
+        attempts += 1
+        #bulls, cows = bullscows(guess, secret)
+        inform("Быки: {}, Коровы: {}", bulls, cows)
     print("Вы победили!")
     return attempts
 
